@@ -1,0 +1,35 @@
+html {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+body {
+    background-size: cover;
+    background-image: url("https://www.dynamicbusiness.com.au/wp-content/uploads/2016/08/Inventory.png");
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar {
+    padding: 6px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    background-color: rgb(51, 51, 51,0.9);
+    width: 100%;
+}
+
+.active {
+    background-color: rgb(36, 177, 36);
+    color: white;
+    padding: 8px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
