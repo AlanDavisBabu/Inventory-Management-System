@@ -3,16 +3,20 @@
 
 <head>
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../login/css/login.css">
+    <link rel="stylesheet" href="../css/welcome.css">
+    <link rel="stylesheet" href="../dashboard/css/dashboard.css">
+    <script src="../js/index.js"> </script>
+    <script src="../login/js/login.js"> </script>
 </head>
 
 <body>
-    <div class="caption">
-        <div class="border">
-            <div>Inventory</div>
-            <div> Management System</div>
-        </div>
-        <a href="../login/html/login.html">LOGIN</a>
-    </div>
+        <span class="navbar">
+                <button type="button" class="active" id="home" onclick="content('../html/welcome.html')">HOME</button>
+        </span>
+        <span id="content">
+
+        </span>
 </body>
 
 </html>
