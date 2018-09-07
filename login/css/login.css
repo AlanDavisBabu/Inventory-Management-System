@@ -1,0 +1,14 @@
+.content {
+    padding: 8px;
+    margin: auto;
+
+     text-align: center;
+}
+.label {
+    font-style: oblique;
+    font-size: 25px;
+    letter-spacing: 5px; 
+}
+#message {
+    color: red;
+}
