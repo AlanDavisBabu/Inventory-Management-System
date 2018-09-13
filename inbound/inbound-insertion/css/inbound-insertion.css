@@ -1,0 +1,33 @@
+.item {
+    padding-top: 5px;
+}
+
+.line {
+    display: flex;
+    flex-direction: column;
+}
+
+#add {
+    padding: 5px;
+}
+
+#quantity {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+#quantity {
+    margin-top: 5px;
+}
+
+.textitem {
+    padding-top: 20px;
+    padding-left: 80px;
+    padding-right: 80px;
+} 
+
+.textquantity {
+    padding-top: 20px;
+    padding-left: 240px;
+    display: inline-block;
+} 

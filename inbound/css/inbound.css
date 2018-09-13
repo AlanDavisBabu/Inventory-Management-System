@@ -1,0 +1,26 @@
+.boxin {
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    position: absolute;
+    top: 80px;
+    left: 230px;
+    overflow: hidden;
+    background-color: rgba(251, 251, 251, 0.77);
+    width: 60%;
+    height: auto;
+}
+.new{
+    padding-right: 5px;
+    text-align: right;
+}
+.activ {
+    background-color: rgb(36, 177, 36);
+    color: white;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    border-radius: 4px;
+}
