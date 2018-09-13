@@ -18,8 +18,8 @@ function authUser() {
                     }
                 });
                 if (!userFound) {
-                    message = "*Enter Username or Password is invalid";
-        document.getElementById("message").innerHTML = message;
+                    message = "*Entered Username or Password is invalid";
+                    document.getElementById("message").innerHTML = message;
                 }
             }).catch(err => console.error(err));
     }
