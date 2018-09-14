@@ -8,6 +8,16 @@
     <button type="button" class="active" id="insertion" onclick="content('../login/html/login.html')">LOGOUT</button>
 </span>
 <div class="boxin">
-        <label>Name: </label><input type="text" name="name" id="name" tabindex="2" class="form-control" >
-       <div class="item"> <button type="button" class="activ" id="home" onclick="addInput()">+ add item</button> </div>
+    <label>Name: </label><input type="text" name="name" id="name" tabindex="2" class="form-control">
+    <div>
+        <div class="textitem">Item</div>
+        <div class="textquantity">Quantity</div>
     </div>
+    <div>
+        <div class="line">
+            <span id="add"></span>
+        </div>
+    </div>
+    <div class="item"> <button type="button" class="activ" id="home" onclick="addRequest()">+ add item</button> </div>
+    <div class="submit"> <button type="button" class="activ" id="home" onclick="outboundSubmit()">Submit</button> </div>
+</div>
