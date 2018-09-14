@@ -23,11 +23,15 @@
 .textitem {
     padding-top: 20px;
     padding-left: 80px;
-    padding-right: 80px;
+    display: inline-block;
 } 
 
 .textquantity {
     padding-top: 20px;
-    padding-left: 240px;
+    padding-left: 140px;
     display: inline-block;
-} 
+}
+.submit{
+    padding-right: 5px;
+    text-align: right;
+}
