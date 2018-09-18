@@ -10,10 +10,12 @@
     width: 60%;
     height: auto;
 }
-.new{
+
+.new {
     padding-right: 5px;
     text-align: right;
 }
+
 .activ {
     background-color: rgb(36, 177, 36);
     color: white;
@@ -23,4 +25,8 @@
     display: inline-block;
     border: none;
     border-radius: 4px;
+}
+
+table,td {
+    border: 1px solid black;
 }
