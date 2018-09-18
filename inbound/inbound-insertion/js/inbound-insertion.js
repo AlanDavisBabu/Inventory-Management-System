@@ -33,8 +33,7 @@ function inboundSubmit() {
     var newInbound = request.responseText;
     var inbound = JSON.parse(newInbound);
     inbound.Name = userName;
-    var date = new Date();
-    inbound.Date = date.toDateString();
+    inbound.Date = new Date();
 
     for (id in items) {
         for (category in stock.currentStock) {
@@ -50,7 +49,7 @@ function inboundSubmit() {
             }
 
         }
-        content('../inbound/html/inbound.html');
+       
     }
     stock = JSON.stringify(stock);
     localStorage.setItem("stock", stock);
@@ -62,6 +61,6 @@ function inboundSubmit() {
     console.log(inboundlist);
 
     localStorage.setItem("inbound", inboundlist);
-
+    inboundDisplay();
 
 }
