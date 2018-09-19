@@ -6,7 +6,6 @@ function inboundList(name) {
     for (newInbound of inbound) {
         if (newInbound.Name == name) {
             var row = "<h4>" + "Name :  " + newInbound.Name + "  </h4>"
-            console.log(name);
             for (category in newInbound.inventory) {
                 for (item in newInbound.inventory[category]) {
                     if (newInbound.inventory[category][item] == 1) {

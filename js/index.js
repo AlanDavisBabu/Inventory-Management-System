@@ -17,4 +17,8 @@ window.onload = function (event) {
         localStorage.setItem("inbound", "[]");
 
     }
+    if (!localStorage.getItem("outbound")) {
+        localStorage.setItem("outbound", "[]");
+
+    }
 }

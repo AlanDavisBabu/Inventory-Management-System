@@ -40,7 +40,7 @@ function outboundSubmit() {
             for (item in stock.currentStock[category]) {
 
                 if (item == items[id].value) {
-                    stock.currentStock[category][item] += parseInt(quantities[id].value);
+                    stock.currentStock[category][item] -= parseInt(quantities[id].value);
                     outbound.inventory[category][item] += parseInt(quantities[id].value);
                 }
             }
@@ -50,14 +50,13 @@ function outboundSubmit() {
     }
     stock = JSON.stringify(stock);
     localStorage.setItem("stock", stock);
-    var newinboundlist = localStorage.getItem("inbound");
-    var inboundlist = JSON.parse(newinboundlist);
-    inboundlist.push(inbound);
+    var newoutboundlist = localStorage.getItem("outbound");
+    var outboundlist = JSON.parse(newoutboundlist);
+    outboundlist.push(outbound);
 
-    inboundlist = JSON.stringify(inboundlist);
-    console.log(inboundlist);
+    outboundlist = JSON.stringify(outboundlist);
 
-    localStorage.setItem("inbound", inboundlist);
-    inboundDisplay();
+    localStorage.setItem("outbound", outboundlist);
+    outboundDisplay();
 
 }

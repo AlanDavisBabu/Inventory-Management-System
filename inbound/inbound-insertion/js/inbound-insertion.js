@@ -55,7 +55,6 @@ function inboundSubmit() {
     inboundlist.push(inbound);
 
     inboundlist = JSON.stringify(inboundlist);
-    console.log(inboundlist);
 
     localStorage.setItem("inbound", inboundlist);
     inboundDisplay();
