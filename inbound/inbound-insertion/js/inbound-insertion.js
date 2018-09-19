@@ -42,9 +42,6 @@ function inboundSubmit() {
                 if (item == items[id].value) {
                     stock.currentStock[category][item] += parseInt(quantities[id].value);
                     inbound.inventory[category][item] += parseInt(quantities[id].value);
-                    console.log(inbound.inventory[category][item]);
-
-                    console.log("quantity", stock.currentStock[category][item]);
                 }
             }
 
