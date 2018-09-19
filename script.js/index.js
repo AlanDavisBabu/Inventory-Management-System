@@ -13,6 +13,14 @@ window.onload = function (event) {
                 localStorage.setItem("stock", stock);
             }).catch(err => console.error(err));
     }
+    if (!localStorage.getItem("count")) {
+        var data = fetch('../dashboard/json/dashboard.json')
+            .then(res => res.json())
+            .then((out) => {
+                var count = JSON.stringify(out);
+                localStorage.setItem("count", count);
+            }).catch(err => console.error(err));
+    }
     if (!localStorage.getItem("inbound")) {
         localStorage.setItem("inbound", "[]");
 

@@ -28,12 +28,15 @@ function outboundSubmit() {
     var table = document.getElementById("currentStockData");
 
     var request = new XMLHttpRequest();
-    request.open("GET", "../outbound/json/outbound.json", false);
+    request.open("GET", "outbound/json/outbound.json", false);
     request.send(null);
     var newOutbound = request.responseText;
     var outbound = JSON.parse(newOutbound);
     outbound.Name = userName;
     outbound.Date = new Date();
+
+    var newcount = localStorage.getItem("count");
+    var count = JSON.parse(newcount);
 
     for (id in items) {
         for (category in stock.currentStock) {
@@ -42,6 +45,8 @@ function outboundSubmit() {
                 if (item == items[id].value) {
                     stock.currentStock[category][item] -= parseInt(quantities[id].value);
                     outbound.inventory[category][item] += parseInt(quantities[id].value);
+                    count.outbound[category] += parseInt(quantities[id].value);
+                    count.currentstock[category] -= parseInt(quantities[id].value);
                 }
             }
 
@@ -50,6 +55,8 @@ function outboundSubmit() {
     }
     stock = JSON.stringify(stock);
     localStorage.setItem("stock", stock);
+    count = JSON.stringify(count);
+    localStorage.setItem("count", count);
     var newoutboundlist = localStorage.getItem("outbound");
     var outboundlist = JSON.parse(newoutboundlist);
     outboundlist.push(outbound);

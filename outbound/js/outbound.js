@@ -1,5 +1,5 @@
 function outboundDisplay() {
-    content('../outbound/html/outbound.html');
+    content('outbound/html/outbound.html');
     var data = localStorage.getItem("outbound");
     var outbound = JSON.parse(data);
     for (newoutbound of outbound) {

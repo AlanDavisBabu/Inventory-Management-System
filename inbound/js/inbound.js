@@ -1,5 +1,5 @@
 function inboundDisplay() {
-    content('../inbound/html/inbound.html');
+    content('inbound/html/inbound.html');
     var data = localStorage.getItem("inbound");
     var inbound = JSON.parse(data);
     for (newInbound of inbound) {

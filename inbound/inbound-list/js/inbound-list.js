@@ -1,5 +1,5 @@
 function inboundList(name) {
-    content('../inbound/inbound-list/html/inbound-list.html');
+    content('inbound/inbound-list/html/inbound-list.html');
     var data = localStorage.getItem("inbound");
     var table = document.getElementById("inboundData");
     var inbound = JSON.parse(data);

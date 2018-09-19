@@ -1,5 +1,5 @@
 function call() {
-    content('../current-stock/html/current-stock.html');
+    content('current-stock/html/current-stock.html');
     var data = localStorage.getItem("stock");
     var stock = JSON.parse(data);
     var table = document.getElementById("currentStockData");

@@ -28,12 +28,15 @@ function inboundSubmit() {
     var table = document.getElementById("currentStockData");
 
     var request = new XMLHttpRequest();
-    request.open("GET", "../inbound/json/inbound.json", false);
+    request.open("GET", "inbound/json/inbound.json", false);
     request.send(null);
     var newInbound = request.responseText;
     var inbound = JSON.parse(newInbound);
     inbound.Name = userName;
     inbound.Date = new Date();
+
+    var newcount = localStorage.getItem("count");
+    var count = JSON.parse(newcount);
 
     for (id in items) {
         for (category in stock.currentStock) {
@@ -42,6 +45,8 @@ function inboundSubmit() {
                 if (item == items[id].value) {
                     stock.currentStock[category][item] += parseInt(quantities[id].value);
                     inbound.inventory[category][item] += parseInt(quantities[id].value);
+                    count.inbound[category] += parseInt(quantities[id].value);
+                    count.currentstock[category] += parseInt(quantities[id].value);
                 }
             }
 
@@ -50,12 +55,12 @@ function inboundSubmit() {
     }
     stock = JSON.stringify(stock);
     localStorage.setItem("stock", stock);
+    count = JSON.stringify(count);
+    localStorage.setItem("count", count);
     var newinboundlist = localStorage.getItem("inbound");
     var inboundlist = JSON.parse(newinboundlist);
     inboundlist.push(inbound);
-
     inboundlist = JSON.stringify(inboundlist);
-
     localStorage.setItem("inbound", inboundlist);
     inboundDisplay();
 

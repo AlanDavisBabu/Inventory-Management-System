@@ -1,5 +1,5 @@
 function outboundList(name) {
-    content('../outbound/outbound-list/html/outbound-list.html');
+    content('outbound/outbound-list/html/outbound-list.html');
     var data = localStorage.getItem("outbound");
     var table = document.getElementById("outboundData");
     var outbound = JSON.parse(data);

@@ -1,0 +1,22 @@
+{
+    "currentstock": {
+        "food": 0,
+        "clothes": 0,
+        "toiletries": 0,
+        "medicine": 0
+    },
+
+    "inbound": {
+        "food": 0,
+        "clothes": 0,
+        "toiletries": 0,
+        "medicine": 0
+    },
+
+    "outbound": {
+        "food": 0,
+        "clothes": 0,
+        "toiletries": 0,
+        "medicine": 0
+    }
+}

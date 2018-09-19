@@ -7,14 +7,14 @@ function authUser() {
         message = "*Please enter Username and Password";
         document.getElementById("message").innerHTML = message;
     } else {
-        fetch('../login/json/login.json')
+        fetch('login/json/login.json')
             .then(res => res.json())
             .then((out) => {
                 out.users.forEach(element => {
 
                     if ((element.username === userName) && (element.password === userPassword)) {
                         userFound = 1;
-                        content('../dashboard/html/dashboard.html');
+                        content('dashboard/html/dashboard.html');
                     }
                 });
                 if (!userFound) {
