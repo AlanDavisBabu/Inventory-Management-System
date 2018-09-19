@@ -4,7 +4,7 @@ function addRequest() {
     var add = document.getElementById("add");
     add.insertAdjacentHTML("beforeend", `<div id='itemdiv[${ itemCount}]'> </div>`);
 
-    var adddiv = document.getElementById("itemdiv[" + i + "]");
+    var adddiv = document.getElementById("itemdiv[" + itemCount + "]");
 
     var item = document.createElement("input");
     item.setAttribute("id", "item");
