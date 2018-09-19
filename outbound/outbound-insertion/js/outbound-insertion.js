@@ -1,8 +1,8 @@
-i = 0;
+itemCount = 0;
 
 function addRequest() {
     var add = document.getElementById("add");
-    add.insertAdjacentHTML("beforeend", "<div id='itemdiv[" + i + "]'> </div>");
+    add.insertAdjacentHTML("beforeend", `<div id='itemdiv[${ itemCount}]'> </div>`);
 
     var adddiv = document.getElementById("itemdiv[" + i + "]");
 
@@ -16,7 +16,7 @@ function addRequest() {
     quantity.setAttribute("class", "outboundquantity");
     adddiv.appendChild(quantity);
 
-    i++;
+    itemCount++;
 }
 
 function outboundSubmit() {
