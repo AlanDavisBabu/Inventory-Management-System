@@ -10,12 +10,11 @@ function inboundList(name) {
                 for (item in newInbound.inventory[category]) {
                     if (newInbound.inventory[category][item] == 1) {
                         row += "<ul><li>" + item + " : " + newInbound.inventory[category][item] + " box</li></ul>";
-                    }
-                    else if (newInbound.inventory[category][item] > 1) {
+                    } else if (newInbound.inventory[category][item] > 1) {
                         row += "<ul><li>" + item + " : " + newInbound.inventory[category][item] + " boxes</li></ul>";
                     }
                 }
-                
+
 
             }
             table.innerHTML += row;
