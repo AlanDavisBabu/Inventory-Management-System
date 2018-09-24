@@ -1,10 +1,10 @@
-function outboundList(name) {
+function outboundList(name,date) {
     content('outbound/outbound-list/html/outbound-list.html');
     var data = localStorage.getItem("outbound");
     var table = document.getElementById("outboundData");
     var outbound = JSON.parse(data);
     for (newoutbound of outbound) {
-        if (newoutbound.Name == name) {
+        if ((newoutbound.Name == name)  && (newoutbound.Date == date)){
             var row = "<h4>" + "Name :  " + newoutbound.Name + "  </h4>"
             for (category in newoutbound.inventory) {
                 for (item in newoutbound.inventory[category]) {

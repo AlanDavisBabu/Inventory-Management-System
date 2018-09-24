@@ -4,6 +4,16 @@ function content(url) {
     req.send(null);
     document.getElementById("content").innerHTML = req.responseText;
 }
+
+function home() {
+    content('home/welcome.html');
+    var table = document.getElementById("navbar");
+    table.innerHTML = "";
+    var row = `<div class="navb"><button type="button" class="active" id="home" onclick="home()">HOME</button></div>`;
+    row += `<div class="nava"><button type="button" class="active" id="home" onclick="content('login/html/login.html')">LOGIN</button></div>`;
+    table.innerHTML += row;
+    
+}
 window.onload = function (event) {
     if (!localStorage.getItem("stock")) {
         var data = fetch('../current-stock/json/current-stock.json')
@@ -29,4 +39,18 @@ window.onload = function (event) {
         localStorage.setItem("outbound", "[]");
 
     }
+    if (!localStorage.getItem("flag")) {
+        localStorage.setItem("flag", 0);
+    }
+    var flag = localStorage.getItem("flag");
+    if (flag == 1) {
+        login();
+    }
+    if (flag == 0) {
+        var table = document.getElementById("navbar");
+        table.innerHTML = "";
+        var row = `<div class="navb"><button type="button" class="active" id="home" onclick="home()">HOME</button></div>`;
+        table.innerHTML += row;
+    }
+
 }

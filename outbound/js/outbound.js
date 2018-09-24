@@ -4,8 +4,8 @@ function outboundDisplay() {
     var outbound = JSON.parse(data);
     for (newoutbound of outbound) {
         var table = document.getElementById("outboundTable");
-        var row = table.insertRow(0);
-        row.setAttribute("onclick", `outboundList('${newoutbound.Name}')`);
+        var row = table.insertRow();
+        row.setAttribute("onclick", `outboundList('${newoutbound.Name}', '${newoutbound.Date}' )`);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var date = new Date(newoutbound.Date);

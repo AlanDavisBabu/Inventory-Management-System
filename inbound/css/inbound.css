@@ -2,7 +2,6 @@
     padding-top: 5px;
     padding-left: 10px;
     padding-bottom: 5px;
-    position: absolute;
     top: 80px;
     left: 230px;
     overflow: hidden;
@@ -27,6 +26,40 @@
     border-radius: 4px;
 }
 
-table,td {
+table {
     border: 1px solid black;
+    border-collapse: collapse;
+    width:80%;
+    text-align: center;
 }
+td,th{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.delete {
+    background-color: rgb(14, 68, 150);
+    color: white;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    border-radius: 4px;
+}
+
+.deleteItem
+{
+    background-color: red;
+    color: white;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    border-radius: 4px;
+    margin: 3px;
+}
+
+
+ 
