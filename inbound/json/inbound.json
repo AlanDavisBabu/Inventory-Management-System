@@ -2,36 +2,36 @@
     "Name": "",
     "Date": "",
     "inventory": {
-        "food": {
-            "water": 0,
-            "rice": 0,
-            "biscuit": 0,
-            "rusk": 0,
-            "bread": 0,
-            "jam": 0,
-            "riceFlour": 0,
-            "wheatFlour": 0
+        "Food": {
+            "Water": 0,
+            "Rice": 0,
+            "Biscuit": 0,
+            "Rusk": 0,
+            "Bread": 0,
+            "Jam": 0,
+            "RiceFlour": 0,
+            "WheatFlour": 0
         },
-        "clothes": {
-            "mensWear": 0,
-            "womensWear": 0,
-            "kidsWear": 0
+        "Clothes": {
+            "MensWear": 0,
+            "WomensWear": 0,
+            "KidsWear": 0
         },
-        "toiletries": {
-            "toothBrush": 0,
-            "toothPaste": 0,
-            "washingPowder": 0,
-            "soap": 0,
-            "bucketMug": 0,
-            "cleaningLotion": 0,
-            "bathingTowel": 0
+        "Toiletries": {
+            "ToothBrush": 0,
+            "ToothPaste": 0,
+            "WashingPowder": 0,
+            "Soap": 0,
+            "BucketMug": 0,
+            "CleaningLotion": 0,
+            "BathingTowel": 0
         },
-        "medicine": {
-            "bandAid": 0,
-            "paracetamol": 0,
-            "cetirizine": 0,
-            "bleachingPowder": 0,
-            "antibiotics": 0
+        "Medicine": {
+            "BandAid": 0,
+            "Paracetamol": 0,
+            "Cetirizine": 0,
+            "BleachingPowder": 0,
+            "Antibiotics": 0
         }
     }
 }

@@ -1,14 +1,14 @@
 function outboundDisplay() {
     content('outbound/html/outbound.html');
-    var data = localStorage.getItem("outbound");
-    var outbound = JSON.parse(data);
+    let data = localStorage.getItem("outbound");
+    let outbound = JSON.parse(data);
     for (newoutbound of outbound) {
-        var table = document.getElementById("outboundTable");
-        var row = table.insertRow();
+        let table = document.getElementById("outboundTable");
+        let row = table.insertRow();
         row.setAttribute("onclick", `outboundList('${newoutbound.Name}', '${newoutbound.Date}' )`);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var date = new Date(newoutbound.Date);
+        let cell1 = row.insertCell(0);
+        let cell2 = row.insertCell(1);
+        let date = new Date(newoutbound.Date);
         date = date.toDateString();
         cell1.innerHTML = newoutbound.Name;
         cell2.innerHTML = date;

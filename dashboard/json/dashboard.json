@@ -1,22 +1,22 @@
 {
     "currentstock": {
-        "food": 0,
-        "clothes": 0,
-        "toiletries": 0,
-        "medicine": 0
+        "Food": 0,
+        "Clothes": 0,
+        "Toiletries": 0,
+        "Medicine": 0
     },
 
     "inbound": {
-        "food": 0,
-        "clothes": 0,
-        "toiletries": 0,
-        "medicine": 0
+        "Food": 0,
+        "Clothes": 0,
+        "Toiletries": 0,
+        "Medicine": 0
     },
 
     "outbound": {
-        "food": 0,
-        "clothes": 0,
-        "toiletries": 0,
-        "medicine": 0
+        "Food": 0,
+        "Clothes": 0,
+        "Toiletries": 0,
+        "Medicine": 0
     }
 }

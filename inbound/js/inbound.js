@@ -1,14 +1,14 @@
 function inboundDisplay() {
     content('inbound/html/inbound.html');
-    var data = localStorage.getItem("inbound");
-    var inbound = JSON.parse(data);
+    let data = localStorage.getItem("inbound");
+    let inbound = JSON.parse(data);
     for (newInbound of inbound) {
-        var table = document.getElementById("inboundTable");
-        var row = table.insertRow();
+        let table = document.getElementById("inboundTable");
+        let row = table.insertRow();
         row.setAttribute("onclick", `inboundList('${newInbound.Name}', '${newInbound.Date}')`);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var date = new Date(newInbound.Date);
+        let cell1 = row.insertCell(0);
+        let cell2 = row.insertCell(1);
+        let date = new Date(newInbound.Date);
         date = date.toDateString();
         cell1.innerHTML = newInbound.Name;
         cell2.innerHTML = date;

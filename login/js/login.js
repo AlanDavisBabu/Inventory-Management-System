@@ -1,8 +1,8 @@
 function authUser() {
-    var userName = document.getElementById("username").value;
-    var userPassword = document.getElementById("password").value;
-    var userFound = 0;
-    var message;
+    let userName = document.getElementById("username").value;
+    let userPassword = document.getElementById("password").value;
+    let userFound = 0;
+    let message;
     if ((userName == "") || (userPassword == "")) {
         message = "*Please enter Username and Password";
         document.getElementById("message").innerHTML = message;
@@ -27,10 +27,10 @@ function authUser() {
 
 function login() {
     localStorage.setItem("flag", 1);
-    var flag = localStorage.getItem("flag");
-    var table = document.getElementById("navbar");
+    let flag = localStorage.getItem("flag");
+    let table = document.getElementById("navbar");
     table.innerHTML = "";
-    var row = `<div class="navb"><div class="navc"><button type="button" class="active" id="dashboard" onclick="content('dashboard/html/dashboard.html')">DASHBOARD</button></div> 
+    let row = `<div class="navb"><div class="navc"><button type="button" class="active" id="dashboard" onclick="content('dashboard/html/dashboard.html')">DASHBOARD</button></div> 
     <div class="navc"><button type="button" class="active" id="currentstock" onclick="call()">CURRENT STOCK</button></div>
     <div class="navc"><button type="button" class="active" id="inbound" onclick="inboundDisplay()">INBOUND</button></div>
     <div class="navc"><button type="button" class="active" id="outbound" onclick="outboundDisplay()">OUTBOUND</button></div></div>
@@ -41,7 +41,7 @@ function login() {
 
 function logout() {
     localStorage.setItem("flag", 0);
-    var flag = localStorage.getItem("flag");
+    let flag = localStorage.getItem("flag");
     console.log(flag);
     home();
 }

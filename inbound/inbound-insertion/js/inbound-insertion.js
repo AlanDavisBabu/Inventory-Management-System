@@ -1,110 +1,122 @@
-itemCount = 0;
+function insertInbound() {
+    localStorage.setItem("itemCount", 0);
+    content('inbound/inbound-insertion/html/inbound-insertion.html');
+}
 
 function addInput() {
-    var add = document.getElementById("add");
-    add.insertAdjacentHTML("beforeend", `<div id='itemdiv[${ itemCount}]'> </div>`);
-
-    var adddiv = document.getElementById("itemdiv[" + itemCount + "]");
-
-    let a = `<input list="itemlists" class="inbounditem">
-  <datalist id="itemlists"></datalist>`;
-    adddiv.insertAdjacentHTML("beforeend", a);
-
-    var list = document.getElementById("itemlists");
-    var data = localStorage.getItem("stock");
-    var stock = JSON.parse(data);
-    for (category in stock.currentStock) {
-        for (var item in stock.currentStock[category]) {
-            list.insertAdjacentHTML("beforeend", ` <option value="${item}">`);
-        }
-    }
-
-
-    var quantity = document.createElement("input");
-    quantity.setAttribute("id", "quantity");
-    quantity.setAttribute("class", "inboundquantity");
-    quantity.setAttribute("type", "number");
-    adddiv.appendChild(quantity);
-    let b = `<button type="button" id = "deleteButton" class="deleteItem" onclick="deleteItem('${itemCount}')"> Delete </button>`;
-    adddiv.insertAdjacentHTML("beforeend", b);
+    let itemCount = localStorage.getItem("itemCount");
+    let add = document.getElementById("add");
+    add.insertAdjacentHTML("beforeend", `<div id='itemdiv-${itemCount}' class="inbound"> </div>`);
+    let adddiv = document.getElementById(`itemdiv-${itemCount}`);
+    let newitemdiv = `<div class="inbounditems" ><input list="itemlists" class="inbounditem" id='inboundItem-${itemCount}'/>
+    <datalist id="itemlists"></datalist></div>`;
+    adddiv.insertAdjacentHTML("beforeend", newitemdiv);
+    let list = document.getElementById("itemlists");
+    let datalist = JSON.parse(localStorage.getItem("datalist"));
+    datalist.forEach(item => {
+        list.insertAdjacentHTML("beforeend", ` <option value="${item}">`);
+    })
+    let newquantitydiv = `<div class="inboundquantities"><input class="inboundquantity" type="number" id='inboundQuantity-${itemCount}'/></div>`;
+    adddiv.insertAdjacentHTML("beforeend", newquantitydiv);
+    let deleteItem = `<div class="itemDelete"><button type="button" id = "deleteButton" class="deleteItem" onclick="deleteItem('${itemCount}')"> Delete </button></div>`;
+    adddiv.insertAdjacentHTML("beforeend", deleteItem);
     itemCount++;
+    localStorage.setItem("itemCount", itemCount);
 }
 
 function inboundSubmit() {
-    var check = 0;
-    var userName = document.getElementById("name").value;
-    var error;
-    var items = document.getElementsByClassName("inbounditem");
-    var quantities = document.getElementsByClassName("inboundquantity");
-    var data = localStorage.getItem("stock");
-    var stock = JSON.parse(data);
-    var table = document.getElementById("currentStockData");
+    let errorDiv = Array.from(document.getElementsByClassName("errorMessage"));
+    if (errorDiv.length > 0) {
+        errorDiv.forEach(inputElement => {
+            inputElement.classList.remove("errorMessage");
+            let msgId = "errorMessage"+inputElement.id;
+            document.getElementById(msgId).remove();
+        })
+
+    }
+    let check = 0;
+    let itemcheck;
+    let userName = document.getElementById("name").value;
+    let items = Array.from(document.getElementsByClassName("inbounditem"));
+    let quantities = Array.from(document.getElementsByClassName("inboundquantity"));
+    let stock = JSON.parse(localStorage.getItem("stock"));
     if (userName == "") {
         check = 1;
-        error = "*Please Enter Name";
-        document.getElementById("errorinbound").innerHTML = error;
+        let error = "*Please Enter Name";
+        markError("name", userName, error);
     }
-    if (items.length == 0) {
+    if (!items.length) {
         check = 1;
-        error = "*Please Enter Inbound details";
-        document.getElementById("errorinbound").innerHTML = error;
+        document.getElementById("errorinbound").innerHTML = "*Please Enter Inbound details";
     }
-    for (var id in items) {
-        if (items[id].value == "") {
+    items.forEach((inboundItem, id) => {
+        itemcheck = 0;
+        Object.keys(stock.currentStock).forEach(key => {
+            Object.keys(stock.currentStock[key]).forEach(item => {
+                if (item == inboundItem.value) {
+                    itemcheck = 1;
+                }
+            })
+        })
+        if (itemcheck == 0) {
             check = 1;
-            error = "*Please Enter Item";
-            document.getElementById("errorinbound").innerHTML = error;
+            let error = "*Please Enter Item";
+            markError(("inboundItem-" + id), inboundItem, error);
+
         }
-    }
-    for (id in quantities) {
+    })
+    items.forEach((inboundItem, id) => {
+        if (inboundItem == "") {
+            check = 1;
+            let error = "*Please Enter Item";
+            markError(("inboundItem-" + id), inboundItem, error);
+
+        }
+    })
+    quantities.forEach((inboundQuantity, id) => {
         if (quantities[id].value == "") {
             check = 1;
-            error = "*Please Enter Quantity";
-            document.getElementById("errorinbound").innerHTML = error;
+            let error = "*Please Enter Quantity";
+            markError(("inboundQuantity-" + id), quantities[id], error);
         }
         if (parseInt(quantities[id].value) <= 0) {
             check = 1;
-            error = "*Please Enter Valid Quantity";
-            document.getElementById("errorinbound").innerHTML = error;
+            let error = "*Please Enter Valid Quantity";
+            markError(("inboundQuantity-" + id), quantities[id], error);
         }
-    }
+    })
     if (check == 0) {
-        var request = new XMLHttpRequest();
+        let request = new XMLHttpRequest();
         request.open("GET", "inbound/json/inbound.json", false);
         request.send(null);
-        var newInbound = request.responseText;
-        var inbound = JSON.parse(newInbound);
+        let inbound = JSON.parse(request.responseText);
         inbound.Name = userName;
         inbound.Date = new Date();
-
-        var newcount = localStorage.getItem("count");
-        var count = JSON.parse(newcount);
-
-        for (id in items) {
-            for (category in stock.currentStock) {
-                for (item in stock.currentStock[category]) {
-
-                    if (item == items[id].value) {
-                        stock.currentStock[category][item] += parseInt(quantities[id].value);
-                        inbound.inventory[category][item] += parseInt(quantities[id].value);
-                        count.inbound[category] += parseInt(quantities[id].value);
-                        count.currentstock[category] += parseInt(quantities[id].value);
+        let count = JSON.parse(localStorage.getItem("count"));
+        items.forEach((inboundItem, id) => {
+            Object.keys(stock.currentStock).forEach(key => {
+                Object.keys(stock.currentStock[key]).forEach(item => {
+                    if (item == inboundItem.value) {
+                        stock.currentStock[key][item] += parseInt(quantities[id].value);
+                        inbound.inventory[key][item] += parseInt(quantities[id].value);
+                        count.inbound[key] += parseInt(quantities[id].value);
+                        count.currentstock[key] += parseInt(quantities[id].value);
                     }
-                }
-
-            }
-
-        }
-        stock = JSON.stringify(stock);
-        localStorage.setItem("stock", stock);
-        count = JSON.stringify(count);
-        localStorage.setItem("count", count);
-        var newinboundlist = localStorage.getItem("inbound");
-        var inboundlist = JSON.parse(newinboundlist);
+                })
+            })
+        })
+        localStorage.setItem("stock", JSON.stringify(stock));
+        localStorage.setItem("count", JSON.stringify(count));
+        let inboundlist = JSON.parse(localStorage.getItem("inbound"));
         inboundlist.push(inbound);
-        inboundlist = JSON.stringify(inboundlist);
-        localStorage.setItem("inbound", inboundlist);
+        localStorage.setItem("inbound", JSON.stringify(inboundlist));
         inboundDisplay();
-
     }
+}
+
+function markError(id, inputField, error) {
+    var inputElement = document.getElementById(id);
+    inputElement.classList.add("errorMessage");
+    let msgId = "errorMessage"+id;
+    inputElement.insertAdjacentHTML('afterend', `<span class="message" id="${msgId}">${error}</span>`);
 }
