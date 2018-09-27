@@ -12,10 +12,12 @@ function addRequest() {
     <datalist id="itemlists"></datalist></div>`;
     adddiv.insertAdjacentHTML("beforeend", newitemdiv);
     let list = document.getElementById("itemlists");
-    let datalist = JSON.parse(localStorage.getItem("datalist"));
-    datalist.forEach(item => {
-        list.insertAdjacentHTML("beforeend", ` <option value="${item}">`);
-    })
+    if (itemCount==0) {
+        let datalist = JSON.parse(localStorage.getItem("datalist"));
+        datalist.forEach(item => {
+            list.insertAdjacentHTML("beforeend", ` <option value="${item}">`);
+        })
+    }
     let newquantitydiv = `<div class="outboundquantities"><input class="outboundquantity" type="number" id='outboundQuantity-${itemCount}'/></div>`;
     adddiv.insertAdjacentHTML("beforeend", newquantitydiv);
     let deleteItem = `<div class="itemDelete"><button type="button" id = "deleteButton" class="deleteItem" onclick="deleteItem('${itemCount}')"> Delete </button></div>`;

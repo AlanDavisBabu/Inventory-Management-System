@@ -1,8 +1,7 @@
 function outboundDisplay() {
     content('outbound/html/outbound.html');
-    let data = localStorage.getItem("outbound");
-    let outbound = JSON.parse(data);
-    for (newoutbound of outbound) {
+    let outbound = JSON.parse(localStorage.getItem("outbound"));
+    outbound.forEach(newoutbound => {
         let table = document.getElementById("outboundTable");
         let row = table.insertRow();
         row.setAttribute("onclick", `outboundList('${newoutbound.Name}', '${newoutbound.Date}' )`);
@@ -12,5 +11,5 @@ function outboundDisplay() {
         date = date.toDateString();
         cell1.innerHTML = newoutbound.Name;
         cell2.innerHTML = date;
-    }
+    })
 }
