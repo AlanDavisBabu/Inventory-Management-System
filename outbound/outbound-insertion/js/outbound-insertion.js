@@ -1,5 +1,5 @@
 function insertOutbound() {
-    set("itemCount", 0);
+    setItem("itemCount", 0);
     content('outbound/outbound-insertion/html/outbound-insertion.html');
 }
 
@@ -14,16 +14,16 @@ function addRequest() {
             }
         })
     }
-    let itemCount = get("itemCount");
-    let add = document.getElementById("add");
+    let itemCount = getItem("itemCount"),
+     add = document.getElementById("add");
     add.insertAdjacentHTML("beforeend", `<div id='itemdiv-${itemCount}' class="outbound"> </div>`);
-    let adddiv = document.getElementById(`itemdiv-${itemCount}`);
-    let newitemdiv = `<div class="outbounditems" ><input list="itemlists" class="outbounditem" id='outboundItem-${itemCount}'/>
+    let adddiv = document.getElementById(`itemdiv-${itemCount}`),
+     newitemdiv = `<div class="outbounditems" ><input list="itemlists" class="outbounditem" id='outboundItem-${itemCount}'/>
     <datalist id="itemlists"></datalist></div>`;
     adddiv.insertAdjacentHTML("beforeend", newitemdiv);
     let list = document.getElementById("itemlists");
     if (itemCount==0) {
-        let datalist = JSON.parse(get("datalist"));
+        let datalist = JSON.parse(getItem("datalist"));
         datalist.forEach(item => {
             list.insertAdjacentHTML("beforeend", ` <option value="${item}">`);
         })
@@ -33,7 +33,7 @@ function addRequest() {
     let deleteItem = `<div class="itemDelete"><button type="button" id = "deleteButton" class="deleteItem" onclick="deleteItem('${itemCount}')"> Delete </button></div>`;
     adddiv.insertAdjacentHTML("beforeend", deleteItem);
     itemCount++;
-    set("itemCount", itemCount);
+    setItem("itemCount", itemCount);
 }
 
 function outboundSubmit() {
@@ -42,16 +42,15 @@ function outboundSubmit() {
         errorDiv.forEach(inputElement => {
             inputElement.classList.remove("errorMessage");
             let msgId = "errorMessage" + inputElement.id;
-            console.log(msgId);
             document.getElementById(msgId).remove();
         })
     }
-    let itemcheck;
-    let items = Array.from(document.getElementsByClassName("outbounditem"));
-    let quantities = Array.from(document.getElementsByClassName("outboundquantity"));
-    let stock = JSON.parse(get("stock"));
-    let check = 0;
-    let userName = document.getElementById("name").value;
+    let itemcheck, 
+    items = Array.from(document.getElementsByClassName("outbounditem")),
+    quantities = Array.from(document.getElementsByClassName("outboundquantity")),
+    stock = JSON.parse(getItem("stock")),
+    check = 0,
+    userName = document.getElementById("name").value;
     if (userName == "") {
         check = 1;
         markError("name", "*Please Enter Name");
@@ -110,7 +109,7 @@ function outboundSubmit() {
         let outbound = JSON.parse(request.responseText);
         outbound.Name = userName;
         outbound.Date = new Date();
-        let count = JSON.parse(get("count"));
+        let count = JSON.parse(getItem("count"));
         items.forEach((outboundItem, id) => {
             Object.keys(stock.currentStock).forEach(key => {
                 Object.keys(stock.currentStock[key]).forEach(item => {
@@ -123,11 +122,11 @@ function outboundSubmit() {
                 })
             })
         })
-        set("stock", JSON.stringify(stock));
-        set("count", JSON.stringify(count));
-        let outboundlist = JSON.parse(get("outbound"));
+        setItem("stock", JSON.stringify(stock));
+        setItem("count", JSON.stringify(count));
+        let outboundlist = JSON.parse(getItem("outbound"));
         outboundlist.push(outbound);
-        set("outbound", JSON.stringify(outboundlist));
+        setItem("outbound", JSON.stringify(outboundlist));
         outboundDisplay();
     }
 }

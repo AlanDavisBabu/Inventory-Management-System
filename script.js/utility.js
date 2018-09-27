@@ -1,8 +1,8 @@
-function set(itemName,item){
+function setItem(itemName,item){
     localStorage.setItem(itemName,item);
 }
 
-function get(itemName)
+function getItem(itemName)
 {
     return(localStorage.getItem(itemName));
 

@@ -9,40 +9,40 @@ function home() {
     content('home/welcome.html');
     let table = document.getElementById("navbar");
     table.innerHTML = "";
-    let row = `<div class="navb"><button type="button" class="active" id="home" onclick="home()">HOME</button></div>`;
-    row += `<div class="nava"><button type="button" class="active" id="home" onclick="content('login/html/login.html')">LOGIN</button></div>`;
+    let row = `<div class="navb"><button type="button" class="active" id="home" onclick="home()">HOME</button></div>
+    <div class="nava"><button type="button" class="active" id="home" onclick="content('login/html/login.html')">LOGIN</button></div>`;
     table.innerHTML += row;
 
 }
 window.onload = function (event) {
-    if (!get("stock")) {
+    if (!getItem("stock")) {
         let data = fetch('../current-stock/json/current-stock.json')
             .then(res => res.json())
             .then((out) => {
                 let stock = JSON.stringify(out);
-                set("stock", stock);
+                setItem("stock", stock);
             }).catch(err => console.error(err));
     }
-    if (!get("count")) {
+    if (!getItem("count")) {
         let data = fetch('../dashboard/json/dashboard.json')
             .then(res => res.json())
             .then((out) => {
                 let count = JSON.stringify(out);
-                set("count", count);
+                setItem("count", count);
             }).catch(err => console.error(err));
     }
-    if (!get("inbound")) {
-        set("inbound", "[]");
+    if (!getItem("inbound")) {
+        setItem("inbound", "[]");
 
     }
-    if (!get("outbound")) {
-        set("outbound", "[]");
+    if (!getItem("outbound")) {
+        setItem("outbound", "[]");
 
     }
-    if (!get("flag")) {
-        set("flag", 0);
+    if (!getItem("flag")) {
+        setItem("flag", 0);
     }
-    let flag = get("flag");
+    let flag = getItem("flag");
     if (flag == 1) {
         login();
     }
@@ -52,19 +52,19 @@ window.onload = function (event) {
         let row = `<div class="navb"><button type="button" class="active" id="home" onclick="home()">HOME</button></div>`;
         table.innerHTML += row;
     }
-    if (!get("itemCount")) {
-        set("itemCount", 0);
+    if (!getItem("itemCount")) {
+        setItem("itemCount", 0);
     }
-    if (get("datalist")) {
-        let stock = JSON.parse(get("stock"));
-        let list=[];
-        let id = 0;
+    if (getItem("datalist")) {
+        let stock = JSON.parse(getItem("stock")),
+         list=[],
+         id = 0;
         Object.keys(stock.currentStock).forEach(key => {
             Object.keys(stock.currentStock[key]).forEach(item => {
                 list[id]=item;
                 id++;
             })
         })
-        set("datalist", JSON.stringify(list));
+        setItem("datalist", JSON.stringify(list));
     }
 }
