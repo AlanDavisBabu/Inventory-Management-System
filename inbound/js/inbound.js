@@ -1,6 +1,6 @@
 function inboundDisplay() {
     content('inbound/html/inbound.html');
-    let inbound = JSON.parse(localStorage.getItem("inbound"));
+    let inbound = JSON.parse(get("inbound"));
     inbound.forEach(newInbound => {
         let table = document.getElementById("inboundTable");
         let row = table.insertRow();

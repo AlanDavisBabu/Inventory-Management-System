@@ -26,8 +26,8 @@ function authUser() {
 }
 
 function login() {
-    localStorage.setItem("flag", 1);
-    let flag = localStorage.getItem("flag");
+    set("flag", 1);
+    let flag = get("flag");
     let table = document.getElementById("navbar");
     table.innerHTML = "";
     let row = `<div class="navb"><div class="navc"><button type="button" class="active" id="dashboard" onclick="content('dashboard/html/dashboard.html')">DASHBOARD</button></div> 
@@ -40,8 +40,8 @@ function login() {
 }
 
 function logout() {
-    localStorage.setItem("flag", 0);
-    let flag = localStorage.getItem("flag");
+    set("flag", 0);
+    let flag = get("flag");
     console.log(flag);
     home();
 }

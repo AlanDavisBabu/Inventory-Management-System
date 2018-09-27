@@ -15,34 +15,34 @@ function home() {
 
 }
 window.onload = function (event) {
-    if (!localStorage.getItem("stock")) {
+    if (!get("stock")) {
         let data = fetch('../current-stock/json/current-stock.json')
             .then(res => res.json())
             .then((out) => {
                 let stock = JSON.stringify(out);
-                localStorage.setItem("stock", stock);
+                set("stock", stock);
             }).catch(err => console.error(err));
     }
-    if (!localStorage.getItem("count")) {
+    if (!get("count")) {
         let data = fetch('../dashboard/json/dashboard.json')
             .then(res => res.json())
             .then((out) => {
                 let count = JSON.stringify(out);
-                localStorage.setItem("count", count);
+                set("count", count);
             }).catch(err => console.error(err));
     }
-    if (!localStorage.getItem("inbound")) {
-        localStorage.setItem("inbound", "[]");
+    if (!get("inbound")) {
+        set("inbound", "[]");
 
     }
-    if (!localStorage.getItem("outbound")) {
-        localStorage.setItem("outbound", "[]");
+    if (!get("outbound")) {
+        set("outbound", "[]");
 
     }
-    if (!localStorage.getItem("flag")) {
-        localStorage.setItem("flag", 0);
+    if (!get("flag")) {
+        set("flag", 0);
     }
-    let flag = localStorage.getItem("flag");
+    let flag = get("flag");
     if (flag == 1) {
         login();
     }
@@ -52,11 +52,11 @@ window.onload = function (event) {
         let row = `<div class="navb"><button type="button" class="active" id="home" onclick="home()">HOME</button></div>`;
         table.innerHTML += row;
     }
-    if (!localStorage.getItem("itemCount")) {
-        localStorage.setItem("itemCount", 0);
+    if (!get("itemCount")) {
+        set("itemCount", 0);
     }
-    if (localStorage.getItem("datalist")) {
-        let stock = JSON.parse(localStorage.getItem("stock"));
+    if (get("datalist")) {
+        let stock = JSON.parse(get("stock"));
         let list=[];
         let id = 0;
         Object.keys(stock.currentStock).forEach(key => {
@@ -65,6 +65,6 @@ window.onload = function (event) {
                 id++;
             })
         })
-        localStorage.setItem("datalist", JSON.stringify(list));
+        set("datalist", JSON.stringify(list));
     }
 }

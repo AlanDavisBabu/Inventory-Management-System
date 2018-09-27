@@ -1,7 +1,7 @@
 function inboundList(name,date) {
     content('inbound/inbound-list/html/inbound-list.html');
     let table = document.getElementById("inboundData");
-    let inbound = JSON.parse(localStorage.getItem("inbound"));
+    let inbound = JSON.parse(get("inbound"));
     inbound.forEach(newInbound => {
         if ((newInbound.Name == name) && (newInbound.Date == date)) {
             console.log(newInbound.Name);

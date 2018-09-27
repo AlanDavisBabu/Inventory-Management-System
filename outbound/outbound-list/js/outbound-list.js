@@ -1,6 +1,6 @@
 function outboundList(name,date) {
     content('outbound/outbound-list/html/outbound-list.html');
-    let data = localStorage.getItem("outbound");
+    let data = get("outbound");
     let table = document.getElementById("outboundData");
     let outbound = JSON.parse(data);
     outbound.forEach(newoutbound => {

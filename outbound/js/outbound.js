@@ -1,6 +1,6 @@
 function outboundDisplay() {
     content('outbound/html/outbound.html');
-    let outbound = JSON.parse(localStorage.getItem("outbound"));
+    let outbound = JSON.parse(get("outbound"));
     outbound.forEach(newoutbound => {
         let table = document.getElementById("outboundTable");
         let row = table.insertRow();

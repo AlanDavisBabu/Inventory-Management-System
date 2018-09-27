@@ -1,5 +1,5 @@
 function insertOutbound() {
-    localStorage.setItem("itemCount", 0);
+    set("itemCount", 0);
     content('outbound/outbound-insertion/html/outbound-insertion.html');
 }
 
@@ -14,7 +14,7 @@ function addRequest() {
             }
         })
     }
-    let itemCount = localStorage.getItem("itemCount");
+    let itemCount = get("itemCount");
     let add = document.getElementById("add");
     add.insertAdjacentHTML("beforeend", `<div id='itemdiv-${itemCount}' class="outbound"> </div>`);
     let adddiv = document.getElementById(`itemdiv-${itemCount}`);
@@ -23,17 +23,17 @@ function addRequest() {
     adddiv.insertAdjacentHTML("beforeend", newitemdiv);
     let list = document.getElementById("itemlists");
     if (itemCount==0) {
-        let datalist = JSON.parse(localStorage.getItem("datalist"));
+        let datalist = JSON.parse(get("datalist"));
         datalist.forEach(item => {
             list.insertAdjacentHTML("beforeend", ` <option value="${item}">`);
         })
     }
-    let newquantitydiv = `<div class="outboundquantities"><input class="outboundquantity" type="number" id='outboundQuantity-${itemCount}'/></div>`;
+    let newquantitydiv = `<div class="outboundquantities"><input class="outboundquantity" type="number" id='outboundQuantity-${itemCount}' min="1" /></div>`;
     adddiv.insertAdjacentHTML("beforeend", newquantitydiv);
     let deleteItem = `<div class="itemDelete"><button type="button" id = "deleteButton" class="deleteItem" onclick="deleteItem('${itemCount}')"> Delete </button></div>`;
     adddiv.insertAdjacentHTML("beforeend", deleteItem);
     itemCount++;
-    localStorage.setItem("itemCount", itemCount);
+    set("itemCount", itemCount);
 }
 
 function outboundSubmit() {
@@ -49,19 +49,16 @@ function outboundSubmit() {
     let itemcheck;
     let items = Array.from(document.getElementsByClassName("outbounditem"));
     let quantities = Array.from(document.getElementsByClassName("outboundquantity"));
-    let stock = JSON.parse(localStorage.getItem("stock"));
+    let stock = JSON.parse(get("stock"));
     let check = 0;
     let userName = document.getElementById("name").value;
-    let error;
     if (userName == "") {
         check = 1;
-        error = "*Please Enter Name";
-        markError("name", userName, error);
+        markError("name", "*Please Enter Name");
     }
     if (items.length == 0) {
         check = 1;
-        error = "*Please Enter Outbound details";
-        markError("home", userName, error);
+        markError("home", "*Please Enter Outbound details");
     }
     items.forEach((outboundItem, id) => {
         itemcheck = 0;
@@ -74,16 +71,14 @@ function outboundSubmit() {
         })
         if (itemcheck == 0) {
             check = 1;
-            error = "*Please Enter Item";
-            markError(("outboundItem-" + id), outboundItem, error);
+            markError(("outboundItem-" + id), "*Please Enter Item");
 
         }
     })
     items.forEach((outboundItem, id) => {
         if (outboundItem == "") {
             check = 1;
-            error = "*Please Enter Item";
-            markError(("outboundItem-" + id), outboundItem, error);
+            markError(("outboundItem-" + id), "*Please Enter Item");
 
         }
         Object.keys(stock.currentStock).forEach(key => {
@@ -91,8 +86,7 @@ function outboundSubmit() {
                 if (item == outboundItem.value) {
                     if (stock.currentStock[key][item] < parseInt(quantities[id].value)) {
                         check = 1;
-                        error = "*Item out of stock";
-                        markError(("outboundQuantity-" + id), outboundItem, error);
+                        markError(("outboundQuantity-" + id), "*Item out of stock");
                     }
                 }
             })
@@ -101,13 +95,11 @@ function outboundSubmit() {
     quantities.forEach((outboundQuantity, id) => {
         if (quantities[id].value == "") {
             check = 1;
-            error = "*Please Enter Quantity";
-            markError(("outboundQuantity-" + id), quantities[id], error);
+            markError(("outboundQuantity-" + id), "*Please Enter Quantity");
         }
         if (parseInt(quantities[id].value) <= 0) {
             check = 1;
-            error = "*Please Enter Valid Quantity";
-            markError(("outboundQuantity-" + id), quantities[id], error);
+            markError(("outboundQuantity-" + id), "*Please Enter Valid Quantity");
         }
 
     })
@@ -118,7 +110,7 @@ function outboundSubmit() {
         let outbound = JSON.parse(request.responseText);
         outbound.Name = userName;
         outbound.Date = new Date();
-        let count = JSON.parse(localStorage.getItem("count"));
+        let count = JSON.parse(get("count"));
         items.forEach((outboundItem, id) => {
             Object.keys(stock.currentStock).forEach(key => {
                 Object.keys(stock.currentStock[key]).forEach(item => {
@@ -131,11 +123,11 @@ function outboundSubmit() {
                 })
             })
         })
-        localStorage.setItem("stock", JSON.stringify(stock));
-        localStorage.setItem("count", JSON.stringify(count));
-        let outboundlist = JSON.parse(localStorage.getItem("outbound"));
+        set("stock", JSON.stringify(stock));
+        set("count", JSON.stringify(count));
+        let outboundlist = JSON.parse(get("outbound"));
         outboundlist.push(outbound);
-        localStorage.setItem("outbound", JSON.stringify(outboundlist));
+        set("outbound", JSON.stringify(outboundlist));
         outboundDisplay();
     }
 }
