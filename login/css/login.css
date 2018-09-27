@@ -1,13 +1,13 @@
-.content {
+.contents {
     padding: 8px;
     margin: auto;
-
-     text-align: center;
+    text-align: center;
 }
 .label {
     font-style: oblique;
     font-size: 25px;
     letter-spacing: 5px; 
+    text-align: center;
 }
 #message {
     color: red;

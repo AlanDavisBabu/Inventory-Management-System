@@ -1,0 +1,87 @@
+.item {
+    padding-top: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.item #home{
+    width: 77px
+}
+.line {
+    display: flex;
+    flex-direction: column;
+}
+
+#add {
+    padding: 5px;
+}
+
+#quantity {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+#quantity {
+    margin-top: 5px;
+}
+
+.textitem {
+    padding-top: 20px;
+    padding-left: 80px;
+    display: inline-block;
+}
+
+.textquantity {
+    padding-top: 20px;
+    padding-left: 140px;
+    display: inline-block;
+    padding-right: 40px;
+}
+
+.submit {
+    padding-right: 5px;
+    text-align: right;
+}
+
+.errorMessage {
+    border: 2px solid red;
+}
+
+.inbounditems {
+    display: inline-block;
+    display: flex;
+    flex-direction: column;
+}
+
+.inboundquantities {
+    padding-left: 2px;
+    display: inline-block;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.itemDelete {
+    padding-left: 2px;
+    position: relative;
+    display: inline-block;
+    top: 0px;
+}
+
+.inbound {
+    display: block;
+    display: flex;
+    align-items: baseline;
+}
+
+.deleteItem {
+    background-color: red;
+    color: white;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    border-radius: 4px;
+    margin: 3px;
+}

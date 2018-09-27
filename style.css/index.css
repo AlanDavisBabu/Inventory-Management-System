@@ -1,0 +1,55 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-size: cover;
+    background: #444242;;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+#navbar {
+    display: flex;
+    align-content: space-between;
+    padding: 6px;
+    overflow: hidden;
+    background-color: rgb(17, 17, 17, .6);
+    width: 100%;
+}
+
+.navb {
+    display: flex;
+    justify-items: flex-start;
+}
+
+.nava {
+    display: flex;
+    justify-items: flex-end;
+}
+
+.navc{
+    padding: 4px;
+}
+
+.active {
+    background-color: transparent;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    border: 1px solid;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.active:hover{
+        background: white;
+        border: 1px solid #ccc;
+        color: #333;
+    }
+    

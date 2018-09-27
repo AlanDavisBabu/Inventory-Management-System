@@ -1,0 +1,37 @@
+{
+    "Name": "",
+    "Date": "",
+    "inventory": {
+        "Food": {
+            "Water": 0,
+            "Rice": 0,
+            "Biscuit": 0,
+            "Rusk": 0,
+            "Bread": 0,
+            "Jam": 0,
+            "RiceFlour": 0,
+            "WheatFlour": 0
+        },
+        "Clothes": {
+            "MensWear": 0,
+            "WomensWear": 0,
+            "KidsWear": 0
+        },
+        "Toiletries": {
+            "ToothBrush": 0,
+            "ToothPaste": 0,
+            "WashingPowder": 0,
+            "Soap": 0,
+            "BucketMug": 0,
+            "CleaningLotion": 0,
+            "BathingTowel": 0
+        },
+        "Medicine": {
+            "BandAid": 0,
+            "Paracetamol": 0,
+            "Cetirizine": 0,
+            "BleachingPowder": 0,
+            "Antibiotics": 0
+        }
+    }
+}

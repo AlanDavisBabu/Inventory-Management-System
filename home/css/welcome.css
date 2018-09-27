@@ -1,0 +1,17 @@
+.centre{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+.caption {
+    text-align: center;
+}
+
+.border {
+    color: #fff;
+    padding: 8px;
+    font-style: oblique;
+    font-size: 25px;
+    letter-spacing: 10px;
+    width: 100%;
+}

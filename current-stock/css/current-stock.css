@@ -1,0 +1,11 @@
+.box {
+    padding-top: 26px;
+    padding-left: 80px;
+    top: 80px;
+    left: 230px;
+    overflow: hidden;
+    background-color: rgba(251, 251, 251, 0.77);
+    width: 60%;
+    height: auto;
+    margin: auto;
+}
