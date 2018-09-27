@@ -1,7 +1,12 @@
 .item {
     padding-top: 5px;
+    display: flex;
+    flex-direction: column;
 }
 
+.item #home{
+    width: 77px
+}
 .line {
     display: flex;
     flex-direction: column;

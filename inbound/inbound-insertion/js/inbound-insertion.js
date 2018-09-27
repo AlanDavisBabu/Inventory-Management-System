@@ -4,6 +4,16 @@ function insertInbound() {
 }
 
 function addInput() {
+    let errorDiv = Array.from(document.getElementsByClassName("errorMessage"));
+    if (errorDiv.length > 0) {
+        errorDiv.forEach(inputElement => {
+            if (inputElement.id == "home") {
+                inputElement.classList.remove("errorMessage");
+                let msgId = "errorMessage" + inputElement.id;
+                document.getElementById(msgId).remove();
+            }
+        })
+    }
     let itemCount = localStorage.getItem("itemCount");
     let add = document.getElementById("add");
     add.insertAdjacentHTML("beforeend", `<div id='itemdiv-${itemCount}' class="inbound"> </div>`);
@@ -49,7 +59,8 @@ function inboundSubmit() {
     }
     if (!items.length) {
         check = 1;
-        document.getElementById("errorinbound").innerHTML = "*Please Enter Inbound details";
+        let error = "*Please Enter Inbound details";
+        markError("home", userName, error);
     }
     items.forEach((inboundItem, id) => {
         itemcheck = 0;

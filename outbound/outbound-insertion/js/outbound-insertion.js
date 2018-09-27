@@ -4,6 +4,16 @@ function insertOutbound() {
 }
 
 function addRequest() {
+    let errorDiv = Array.from(document.getElementsByClassName("errorMessage"));
+    if (errorDiv.length > 0) {
+        errorDiv.forEach(inputElement => {
+            if (inputElement.id == "home") {
+                inputElement.classList.remove("errorMessage");
+                let msgId = "errorMessage" + inputElement.id;
+                document.getElementById(msgId).remove();
+            }
+        })
+    }
     let itemCount = localStorage.getItem("itemCount");
     let add = document.getElementById("add");
     add.insertAdjacentHTML("beforeend", `<div id='itemdiv-${itemCount}' class="outbound"> </div>`);
@@ -51,7 +61,7 @@ function outboundSubmit() {
     if (items.length == 0) {
         check = 1;
         error = "*Please Enter Outbound details";
-        document.getElementById("erroroutbound").innerHTML = error;
+        markError("home", userName, error);
     }
     items.forEach((outboundItem, id) => {
         itemcheck = 0;
