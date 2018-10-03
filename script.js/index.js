@@ -55,7 +55,7 @@ window.onload = function (event) {
     if (!getItem("itemCount")) {
         setItem("itemCount", 0);
     }
-    if (getItem("datalist")) {
+    if (!getItem("datalist")) {
         let stock = JSON.parse(getItem("stock")),
          list=[],
          id = 0;

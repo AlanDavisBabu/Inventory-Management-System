@@ -1,11 +1,11 @@
 
-.outbounditems {
+.items {
     display: inline-block;
     display: flex;
     flex-direction: column;
 }
 
-.outboundquantities {
+.quantities {
     padding-left: 2px;
     display: inline-block;
     display: flex;
@@ -13,7 +13,7 @@
 
 }
 
-.outbound {
+.insertion {
     display: block;
     display: flex;
     align-items: baseline;

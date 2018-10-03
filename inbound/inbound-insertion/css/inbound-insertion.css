@@ -1,10 +1,10 @@
-.item {
+.itemnew {
     padding-top: 5px;
     display: flex;
     flex-direction: column;
 }
 
-.item #home{
+.itemnew #home{
     width: 77px
 }
 .line {
