@@ -15,9 +15,10 @@ body {
     display: flex;
     align-content: space-between;
     padding: 6px;
+    margin-bottom: 30px;
     overflow: hidden;
     background-color: rgb(17, 17, 17, .6);
-    width: 100%;
+    width: 99%;
 }
 
 .navb {

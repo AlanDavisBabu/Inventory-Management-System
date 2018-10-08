@@ -1,3 +1,9 @@
+function dashboard()
+{
+    content('dashboard/html/dashboard.html');
+    drawGraph();
+}
+
 function authUser() {
     let userName = document.getElementById("username").value,
      userPassword = document.getElementById("password").value,
@@ -27,13 +33,13 @@ function login() {
     let flag = getItem("flag"),
     table = document.getElementById("navbar");
     table.innerHTML = "";
-    let row = `<div class="navb"><div class="navc"><button type="button" class="active" id="dashboard" onclick="content('dashboard/html/dashboard.html')">DASHBOARD</button></div> 
+    let row = `<div class="navb"><div class="navc"><button type="button" class="active" id="dashboard" onclick="dashboard()">DASHBOARD</button></div> 
     <div class="navc"><button type="button" class="active" id="currentstock" onclick="call()">CURRENT STOCK</button></div>
     <div class="navc"><button type="button" class="active" id="inbound" onclick="inboundDisplay()">INBOUND</button></div>
     <div class="navc"><button type="button" class="active" id="outbound" onclick="outboundDisplay()">OUTBOUND</button></div></div>
     <div class="nava"><button type="button" class="active" id="outbound" onclick="logout()">LOGOUT</button></div>`;
     table.innerHTML += row;
-    content('dashboard/html/dashboard.html');
+    dashboard();    
 }
 
 function logout() {

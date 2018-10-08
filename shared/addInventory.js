@@ -108,7 +108,7 @@ function submit(inventoryType) {
                             count[itemId].currentstock += parseInt(quantities[id].value);
                         }
                         type.inventory[key][product] += parseInt(quantities[id].value);
-                        count[itemId].type += parseInt(quantities[id].value);
+                        count[itemId][inventoryType] += parseInt(quantities[id].value);
                     }
                 })
             })

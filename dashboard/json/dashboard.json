@@ -1,22 +1,26 @@
-{
-    "currentstock": {
-        "Food": 0,
-        "Clothes": 0,
-        "Toiletries": 0,
-        "Medicine": 0
+[
+    {
+        "inventoryType":"Food",
+        "currentstock":0,
+        "inbound":0,
+        "outbound":0
     },
-
-    "inbound": {
-        "Food": 0,
-        "Clothes": 0,
-        "Toiletries": 0,
-        "Medicine": 0
+    {
+        "inventoryType":"Clothes",
+        "currentstock":0,
+        "inbound":0,
+        "outbound":0
     },
-
-    "outbound": {
-        "Food": 0,
-        "Clothes": 0,
-        "Toiletries": 0,
-        "Medicine": 0
-    }
-}
+    {
+        "inventoryType":"Toiletries",
+        "currentstock":0,
+        "inbound":0,
+        "outbound":0
+    },
+    {
+        "inventoryType":"Medicine",
+        "currentstock":0,
+        "inbound":0,
+        "outbound":0
+    }   
+]
