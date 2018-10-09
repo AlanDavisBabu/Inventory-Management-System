@@ -1,6 +1,6 @@
 function insertOutbound() {
     setItem("itemCount", 0);
-    content('outbound/outbound-insertion/html/outbound-insertion.html');
+    content('outbound/newoutbound/html/newoutbound.html');
 }
 
 function outboundSubmit() 

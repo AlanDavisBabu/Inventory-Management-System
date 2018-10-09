@@ -1,6 +1,6 @@
 function insertInbound() {
     setItem("itemCount", 0);
-    content('inbound/inbound-insertion/html/inbound-insertion.html');
+    content('inbound/newinbound/html/newinbound.html');
 }
   
 function inboundSubmit() 

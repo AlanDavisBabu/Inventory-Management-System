@@ -1,6 +1,5 @@
-function drawGraph()
-{
-let svg = d3.select("svg"),
+function drawGraph() {
+  let svg = d3.select("svg"),
     margin = {
       top: 20,
       right: 80,
@@ -17,8 +16,8 @@ let svg = d3.select("svg"),
 
   let line = d3.line()
     .curve(d3.curveBasis)
-    .x (d => x(d.inventoryType))
-    .y(d=> y(d.unit));
+    .x(d => x(d.inventoryType))
+    .y(d => y(d.unit));
 
   let data = JSON.parse(localStorage.getItem("count"));
 
@@ -39,8 +38,8 @@ let svg = d3.select("svg"),
   x.domain(data.map(d => d.inventoryType));
 
   y.domain([
-    d3.min(inventoryModes, (c =>  d3.min(c.values, (d => d.unit)))),
-    d3.max(inventoryModes, (c => d3.max(c.values,(d => d.unit))))
+    d3.min(inventoryModes, (c => d3.min(c.values, (d => d.unit)))),
+    d3.max(inventoryModes, (c => d3.max(c.values, (d => d.unit))))
   ]);
 
   z.domain(inventoryModes.map(c => c.id));
@@ -71,16 +70,15 @@ let svg = d3.select("svg"),
     .style("stroke", (d => z(d.id)));
 
   mode.append("text")
-    .datum(d =>{
+    .datum(d => {
       return {
         id: d.id,
         value: d.values[d.values.length - 1]
       };
     })
-    .attr("transform",(d => "translate(" + x(d.value.inventoryType) + "," + y(d.value.unit) + ")"))
+    .attr("transform", (d => "translate(" + x(d.value.inventoryType) + "," + y(d.value.unit) + ")"))
     .attr("x", 3)
     .attr("dy", "0.35em")
     .style("font", "10px sans-serif")
-    .text(d => d.id );
+    .text(d => d.id);
 }
-
