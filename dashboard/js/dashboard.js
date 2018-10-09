@@ -104,12 +104,5 @@ let svg = d3.select("svg"),
     .text(function (d) {
       return d.id;
     });
-
-
-  function type(d, _, columns) {
-
-    // d.inventoryType = parseTime(d.inventoryType);
-    // for (let i = 1, n = columns.length, c; i < n; ++i) d[c = columns[i]] = +d[c];
-    return d;
-  }
 }
+
