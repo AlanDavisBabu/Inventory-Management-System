@@ -20,6 +20,8 @@ window.onload = function (event) {
             .then(res => res.json())
             .then((out) => {
                 let stock = JSON.stringify(out);
+                console.log(stock);
+
                 setItem("stock", stock);
             }).catch(err => console.error(err));
     }
@@ -56,15 +58,19 @@ window.onload = function (event) {
         setItem("itemCount", 0);
     }
     if (!getItem("datalist")) {
-        let stock = JSON.parse(getItem("stock")),
-         list=[],
-         id = 0;
-        Object.keys(stock.currentStock).forEach(key => {
-            Object.keys(stock.currentStock[key]).forEach(item => {
-                list[id]=item;
-                id++;
-            })
-        })
-        setItem("datalist", JSON.stringify(list));
+        let data = fetch('../current-stock/json/current-stock.json')
+            .then(res => res.json())
+            .then((stock) => {
+                   let list = [],
+                    id = 0;
+                Object.keys(stock.currentStock).forEach(key => {
+                    Object.keys(stock.currentStock[key]).forEach(item => {
+                        list[id] = item;
+                        id++;
+                    })
+                })
+                setItem("datalist", JSON.stringify(list));
+            }).catch(err => console.error(err));
+
     }
 }
