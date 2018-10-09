@@ -16,7 +16,7 @@ function home() {
 }
 window.onload = function (event) {
     if (!getItem("stock")) {
-        let data = fetch('../current-stock/json/current-stock.json')
+        let data = fetch('./current-stock/json/current-stock.json')
             .then(res => res.json())
             .then((out) => {
                 let stock = JSON.stringify(out);
@@ -26,7 +26,7 @@ window.onload = function (event) {
             }).catch(err => console.error(err));
     }
     if (!getItem("count")) {
-        let data = fetch('../dashboard/json/dashboard.json')
+        let data = fetch('./dashboard/json/dashboard.json')
             .then(res => res.json())
             .then((out) => {
                 let count = JSON.stringify(out);
