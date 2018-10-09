@@ -58,7 +58,7 @@ window.onload = function (event) {
         setItem("itemCount", 0);
     }
     if (!getItem("datalist")) {
-        let data = fetch('../current-stock/json/current-stock.json')
+        let data = fetch('./current-stock/json/current-stock.json')
             .then(res => res.json())
             .then((stock) => {
                    let list = [],
