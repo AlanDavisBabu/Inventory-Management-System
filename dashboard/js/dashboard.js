@@ -17,12 +17,8 @@ let svg = d3.select("svg"),
 
   let line = d3.line()
     .curve(d3.curveBasis)
-    .x(function (d) {
-      return x(d.inventoryType);
-    })
-    .y(function (d) {
-      return y(d.unit);
-    });
+    .x (d => x(d.inventoryType))
+    .y(d=> y(d.unit));
 
   let data = JSON.parse(localStorage.getItem("count"));
 
@@ -31,7 +27,7 @@ let svg = d3.select("svg"),
   let inventoryModes = zAxisKeys.map(key => {
     return {
       id: key,
-      values: data.map(function (d) {
+      values: data.map(d => {
         return {
           inventoryType: d.inventoryType,
           unit: d[key]
@@ -43,21 +39,11 @@ let svg = d3.select("svg"),
   x.domain(data.map(d => d.inventoryType));
 
   y.domain([
-    d3.min(inventoryModes, function (c) {
-      return d3.min(c.values, function (d) {
-        return d.unit;
-      });
-    }),
-    d3.max(inventoryModes, function (c) {
-      return d3.max(c.values, function (d) {
-        return d.unit;
-      });
-    })
+    d3.min(inventoryModes, (c =>  d3.min(c.values, (d => d.unit)))),
+    d3.max(inventoryModes, (c => d3.max(c.values,(d => d.unit))))
   ]);
 
-  z.domain(inventoryModes.map(function (c) {
-    return c.id;
-  }));
+  z.domain(inventoryModes.map(c => c.id));
 
   g.append("g")
     .attr("class", "axis axis--x")
@@ -81,28 +67,20 @@ let svg = d3.select("svg"),
 
   mode.append("path")
     .attr("class", "line")
-    .attr("d", function (d) {
-      return line(d.values);
-    })
-    .style("stroke", function (d) {
-      return z(d.id);
-    });
+    .attr("d", (d => line(d.values)))
+    .style("stroke", (d => z(d.id)));
 
   mode.append("text")
-    .datum(function (d) {
+    .datum(d =>{
       return {
         id: d.id,
         value: d.values[d.values.length - 1]
       };
     })
-    .attr("transform", function (d) {
-      return "translate(" + x(d.value.inventoryType) + "," + y(d.value.unit) + ")";
-    })
+    .attr("transform",(d => "translate(" + x(d.value.inventoryType) + "," + y(d.value.unit) + ")"))
     .attr("x", 3)
     .attr("dy", "0.35em")
     .style("font", "10px sans-serif")
-    .text(function (d) {
-      return d.id;
-    });
+    .text(d => d.id );
 }
 
