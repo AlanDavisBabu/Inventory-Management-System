@@ -46,5 +46,7 @@ function logout() {
     setItem("flag", 0);
     let flag = getItem("flag");
     console.log(flag);
+    let table = document.getElementById("navbar");
+    table.innerHTML = "";
     home();
 }

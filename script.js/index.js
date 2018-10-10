@@ -5,15 +5,9 @@ function content(url) {
     document.getElementById("content").innerHTML = req.responseText;
 }
 
-function home() {
-    content('home/welcome.html');
-    let table = document.getElementById("navbar");
-    table.innerHTML = "";
-    let row = `<div class="navb"><button type="button" class="active" id="home" onclick="home()">HOME</button></div>
-    <div class="nava"><button type="button" class="active" id="home" onclick="content('login/html/login.html')">LOGIN</button></div>`;
-    table.innerHTML += row;
 
-}
+
+
 window.onload = function (event) {
     if (!getItem("stock")) {
         let data = fetch('../current-stock/json/current-stock.json')
@@ -51,8 +45,6 @@ window.onload = function (event) {
     if (flag == 0) {
         let table = document.getElementById("navbar");
         table.innerHTML = "";
-        let row = `<div class="navb"><button type="button" class="active" id="home" onclick="home()">HOME</button></div>`;
-        table.innerHTML += row;
     }
     if (!getItem("itemCount")) {
         setItem("itemCount", 0);
@@ -61,7 +53,7 @@ window.onload = function (event) {
         let data = fetch('../current-stock/json/current-stock.json')
             .then(res => res.json())
             .then((stock) => {
-                   let list = [],
+                let list = [],
                     id = 0;
                 Object.keys(stock.currentStock).forEach(key => {
                     Object.keys(stock.currentStock[key]).forEach(item => {
@@ -73,4 +65,9 @@ window.onload = function (event) {
             }).catch(err => console.error(err));
 
     }
+    home();
+}
+
+function home() {
+    content('login/html/login.html');
 }
