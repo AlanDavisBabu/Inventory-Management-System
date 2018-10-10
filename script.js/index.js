@@ -45,6 +45,8 @@ window.onload = function (event) {
     if (flag == 0) {
         let table = document.getElementById("navbar");
         table.innerHTML = "";
+        home();
+
     }
     if (!getItem("itemCount")) {
         setItem("itemCount", 0);
@@ -65,7 +67,7 @@ window.onload = function (event) {
             }).catch(err => console.error(err));
 
     }
-    home();
+    
 }
 
 function home() {
