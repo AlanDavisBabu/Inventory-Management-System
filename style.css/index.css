@@ -17,8 +17,7 @@ body {
     padding: 6px;
     margin-bottom: 30px;
     overflow: hidden;
-    background-color: rgb(17, 17, 17, .6);
-    width: 99%;
+    width: auto;
 }
 
 .navb {
@@ -56,7 +55,6 @@ body {
     .centre{
         display: flex;
         align-content: center;
-        /* justify-content: center; */
     }
     .caption {
         text-align: center;
@@ -69,8 +67,6 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        font-size: 25px;
-        letter-spacing: 10px;
         width: 100%;
         height: 100%;
     }

@@ -35,17 +35,18 @@ window.onload = function (event) {
         setItem("outbound", "[]");
 
     }
-    if (!getItem("flag")) {
-        setItem("flag", 0);
+    if (!getItem("isloggedIN")) {
+        setItem("isloggedIN", 0);
     }
-    let flag = getItem("flag");
-    if (flag == 1) {
+    let isloggedIN = getItem("isloggedIN");
+    if (isloggedIN == 1) {
         login();
     }
-    if (flag == 0) {
+    if (isloggedIN == 0) {
         let table = document.getElementById("navbar");
         table.innerHTML = "";
         home();
+        checkSubmit();
 
     }
     if (!getItem("itemCount")) {

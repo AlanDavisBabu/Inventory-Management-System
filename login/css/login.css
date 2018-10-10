@@ -1,6 +1,5 @@
 .contents {
     padding: 8px;
-    /* margin: auto; */
     text-align: center;
 }
 .label {
@@ -11,4 +10,5 @@
 }
 #message {
     color: red;
+    text-align: center;
 }

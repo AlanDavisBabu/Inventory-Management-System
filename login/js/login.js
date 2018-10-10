@@ -29,8 +29,8 @@ function authUser() {
 }
 
 function login() {
-    setItem("flag", 1);
-    let flag = getItem("flag"),
+    setItem("isloggedIN", 1);
+    let isloggedIN = getItem("isloggedIN"),
     table = document.getElementById("navbar");
     table.innerHTML = "";
     let row = `<div class="navb"><div class="navc"><button type="button" class="active" id="dashboard" onclick="dashboard()">DASHBOARD</button></div> 
@@ -43,10 +43,21 @@ function login() {
 }
 
 function logout() {
-    setItem("flag", 0);
-    let flag = getItem("flag");
-    console.log(flag);
+    setItem("isloggedIN", 0);
+    let isloggedIN = getItem("isloggedIN");
+    console.log(isloggedIN);
     let table = document.getElementById("navbar");
     table.innerHTML = "";
     home();
 }
+
+function checkSubmit(e) {
+    let input = document.getElementById("userpassword");
+    input.addEventListener("keyup", function (event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+    document.getElementById("home").click();
+    }
+    });
+    }
+    
