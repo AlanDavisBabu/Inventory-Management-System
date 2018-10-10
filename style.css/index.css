@@ -6,7 +6,7 @@ html {
 body {
     background-size: cover;
     background: #444242;;
-    width: 100%;
+    width: auto;
     height: 100%;
     margin: 0;
 }
