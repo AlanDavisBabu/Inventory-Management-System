@@ -14,8 +14,6 @@ window.onload = function (event) {
             .then(res => res.json())
             .then((out) => {
                 let stock = JSON.stringify(out);
-                console.log(stock);
-
                 setItem("stock", stock);
             }).catch(err => console.error(err));
     }
@@ -43,8 +41,7 @@ window.onload = function (event) {
         login();
     }
     if (isloggedIN == 0) {
-        let table = document.getElementById("navbar");
-        table.innerHTML = "";
+        document.getElementById("navbar").style.display = "none";
         home();
         checkSubmit();
 

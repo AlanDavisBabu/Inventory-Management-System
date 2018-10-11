@@ -59,6 +59,7 @@ function drawGraph() {
     .attr("fill", "#000")
     .text("Unit of Boxes");
 
+
   let mode = g.selectAll(".mode")
     .data(inventoryModes)
     .enter().append("g")
@@ -81,4 +82,17 @@ function drawGraph() {
     .attr("dy", "0.35em")
     .style("font", "10px sans-serif")
     .text(d => d.id);
+
+    legend = svg.append("g")
+    .attr("class","legend")
+    .attr("transform","translate(50,30)")
+    .style("font-size","12px")
+    .call(d3.legend)
+
+  setTimeout(function() { 
+    legend
+      .style("font-size","20px")
+      .attr("data-style-padding",10)
+      .call(d3.legend)
+  },1000)
 }

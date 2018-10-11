@@ -5,7 +5,8 @@ html {
 
 body {
     background-size: cover;
-    background: #444242;;
+    background: #444242;
+    ;
     width: auto;
     height: 100%;
     margin: 0;
@@ -14,23 +15,19 @@ body {
 #navbar {
     display: flex;
     align-content: space-between;
+    background-color: rgba(12, 12, 12, 0.7);
     padding: 6px;
     margin-bottom: 30px;
     overflow: hidden;
     width: auto;
+    display: inline;
 }
 
-.navb {
-    display: flex;
-    justify-items: flex-start;
+#navbar #logout {
+    float: right;
 }
 
-.nava {
-    display: flex;
-    justify-items: flex-end;
-}
-
-.navc{
+.navc {
     padding: 4px;
 }
 
@@ -47,30 +44,43 @@ body {
     cursor: pointer;
 }
 
-.active:hover{
-        background: white;
-        border: 1px solid #ccc;
-        color: #333;
-    }
-    .centre{
-        display: flex;
-        align-content: center;
-    }
-    .caption {
-        text-align: center;
-    }
-    
-    .border {
-        color: #fff;
-        padding: 8px;
-        font-style: oblique;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: auto;
-        height: 100%;
-    }
-    #content {
-        height:80%;
-    }
-    
+.active:hover {
+    background: white;
+    border: 1px solid #ccc;
+    color: #333;
+}
+
+.centre {
+    display: flex;
+    align-content: center;
+}
+
+.caption {
+    text-align: center;
+}
+
+.border {
+    color: #fff;
+    padding: 8px;
+    font-style: oblique;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: auto;
+    height: 100%;
+}
+
+#content {
+    height: 80%;
+}
+
+.displaymessage {
+    display: flex;
+    justify-content: center;
+
+}
+
+.displaytable {
+    display: flex;
+    justify-content: center;
+}

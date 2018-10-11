@@ -30,15 +30,8 @@ function authUser() {
 
 function login() {
     setItem("isloggedIN", 1);
-    let isloggedIN = getItem("isloggedIN"),
-    table = document.getElementById("navbar");
-    table.innerHTML = "";
-    let row = `<div class="navb"><div class="navc"><button type="button" class="active" id="dashboard" onclick="dashboard()">DASHBOARD</button></div> 
-    <div class="navc"><button type="button" class="active" id="currentstock" onclick="call()">CURRENT STOCK</button></div>
-    <div class="navc"><button type="button" class="active" id="inbound" onclick="inboundDisplay()">INBOUND</button></div>
-    <div class="navc"><button type="button" class="active" id="outbound" onclick="outboundDisplay()">OUTBOUND</button></div></div>
-    <div class="nava"><button type="button" class="active" id="outbound" onclick="logout()">LOGOUT</button></div>`;
-    table.innerHTML += row;
+    let isloggedIN = getItem("isloggedIN");
+    document.getElementById("navbar").style.display="block";
     dashboard();    
 }
 
@@ -46,8 +39,7 @@ function logout() {
     setItem("isloggedIN", 0);
     let isloggedIN = getItem("isloggedIN");
     console.log(isloggedIN);
-    let table = document.getElementById("navbar");
-    table.innerHTML = "";
+    document.getElementById("navbar").style.display = "none";
     home();
 }
 

@@ -26,12 +26,25 @@
         <script src="shared/displayInventory.js"> </script>
         <script src="shared/list.js"> </script>
         <script src="dashboard/js/dashboard.js"> </script>
+        <script src="dashboard/js/d3.legend.js"> </script>
 
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css"/>
+        <link rel="stylesheet" href="/style.css/dataTable.css" />
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
 
 </head>
 
 <body>
-        <nav id="navbar" style="justify-content: space-between;"></nav>
+        <nav id="navbar" style="justify-content: space-between;">
+                <div class="navb"><button type="button" class="active" id="dashboard" onclick="dashboard()">DASHBOARD</button>
+                        <button type="button" class="active" id="currentstock" onclick="call()">CURRENT STOCK</button>
+                        <button type="button" class="active" id="inbound" onclick="inboundDisplay()">INBOUND</button>
+                        <button type="button" class="active" id="outbound" onclick="outboundDisplay()">OUTBOUND</button>
+                        <button type="button" class="active" id="logout" onclick="logout()">LOGOUT</button>
+                </div>
+        </nav>
         <div id="content"></div>
 </body>
 

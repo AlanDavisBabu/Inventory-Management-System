@@ -33,10 +33,6 @@ table {
     width:80%;
     text-align: center;
 }
-td,th{
-    border: 1px solid black;
-    border-collapse: collapse;
-}
 
 .delete {
     background-color: rgb(14, 68, 150);
